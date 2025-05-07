@@ -12,11 +12,10 @@ type Project = {
   technologies: string[];
 };
 
-const iotImages = import.meta.glob('/public/images/projects/iot/*.jpg', { eager: true });
-
-const schedulingImages = import.meta.glob('/public/images/projects/scheduling/*.jpg', { eager: true });
-
-const clashRoyaleImages = import.meta.glob('/public/images/projects/clash-royale/*.jpg', { eager: true });
+// Corrected glob paths - relative to 'src'
+const iotImages = import.meta.glob('/images/projects/iot/*.jpg', { eager: true });
+const schedulingImages = import.meta.glob('/images/projects/scheduling/*.jpg', { eager: true });
+const clashRoyaleImages = import.meta.glob('/images/projects/clash-royale/*.jpg', { eager: true });
 
 
 
