@@ -66,7 +66,7 @@ const Header: React.FC = () => {
           {/* Social Links */}
           <div className="hidden md:flex items-center space-x-4">
             <a
-              href="https://github.com"
+              href="https://github.com/mayagel"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-700 hover:text-blue-600 transition-colors"
@@ -75,7 +75,7 @@ const Header: React.FC = () => {
               <Github size={20} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/yagel-maimon/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-700 hover:text-blue-600 transition-colors"

@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
             </span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-            Full-stack developer specializing in distributed systems and Big Data solutions.
+            <b>Full-stack</b> developer specializing in distributed systems and <b>Big Data</b> solutions.
             Passionate about scalable architecture and implementing robust solutions.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">

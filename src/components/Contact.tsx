@@ -49,7 +49,7 @@ const Contact: React.FC = () => {
       icon: <Linkedin size={24} />,
       label: 'LinkedIn',
       value: 'Connect with me',
-      href: 'https://linkedin.com',
+      href: 'https://linkedin.com/in/yagel-maimon/',
     },
   ];
 
