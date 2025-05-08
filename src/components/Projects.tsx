@@ -9,9 +9,9 @@ type Project = {
   achievements: string[];
 };
 
-const iotImages = import.meta.glob('/images/projects/iot/*.jpg', { eager: true });
-const schedulingImages = import.meta.glob('/images/projects/scheduling/*.jpg', { eager: true });
-const clashRoyaleImages = import.meta.glob('/images/projects/clash-royale/*.jpg', { eager: true });
+const iotImages = import.meta.glob('/public/images/projects/iot/*.jpg', { eager: true });
+const schedulingImages = import.meta.glob('/public/images/projects/scheduling/*.jpg', { eager: true });
+const clashRoyaleImages = import.meta.glob('/public/images/projects/clash-royale/*.jpg', { eager: true });
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   return (
@@ -53,7 +53,7 @@ const Projects: React.FC = () => {
       title: "IOT - Voice Assistance Project",
       description: "Developed an innovative voice assistance system integrating IoT devices for smart home automation.",
       icon: <Cpu size={24} />,
-      images: Object.keys(iotImages),
+      images: Object.keys(iotImages).map((key) => key.slice('/public'.length)),
       achievements: [
         "Implemented natural language processing for voice commands",
         "Integrated multiple IoT devices and protocols",
