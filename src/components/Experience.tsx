@@ -1,22 +1,37 @@
 import React from 'react';
 import { CalendarClock, Server, GitBranch, Database, Activity } from 'lucide-react';
 
-const techKeywords = [
-  'React', 'Redux', 'JavaScript', 'TypeScript', 'NodeJS', 'Python', 'SQL', 'C\\+\\+',
-  'Docker', 'Kubernetes', 'Jest', 'Git', 'Grafana', 'Splunk', 'Apache Spark', 'CI/CD'
-];
-
 const highlightTechnologies = (text: string): React.ReactNode => {
-  const pattern = new RegExp(`\\b(${techKeywords.join('|')})\\b`, 'gi');
-  const parts = text.split(pattern);
+  const techKeywords = [
+    'React', 'Redux', 'JavaScript', 'TypeScript', 'NodeJS', 'Python',
+    'SQL', 'C\\+\\+', 'Docker', 'Kubernetes', 'Jest', 'Git', 'Grafana',
+    'Splunk', 'Apache Spark', 'CI/CD'
+  ];
 
-  return parts.map((part, i) =>
-    techKeywords.some(keyword => new RegExp(`^${keyword}$`, 'i').test(part)) ? (
-      <strong key={i} className="font-semibold text-gray-800">{part}</strong>
-    ) : (
-      <React.Fragment key={i}>{part}</React.Fragment>
-    )
-  );
+  const regex = new RegExp(`(${techKeywords.join('|')})`, 'gi');
+
+  const parts: React.ReactNode[] = [];
+  let lastIndex = 0;
+
+  text.replace(regex, (match, _p1, offset) => {
+    // Push plain text before the match
+    if (lastIndex < offset) {
+      parts.push(text.slice(lastIndex, offset));
+    }
+    // Push bold match
+    parts.push(
+      <strong key={offset} className="font-semibold text-gray-800">{match}</strong>
+    );
+    lastIndex = offset + match.length;
+    return match;
+  });
+
+  // Push any remaining text
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return <>{parts}</>;
 };
 
 const ExperienceCard: React.FC<{
