@@ -38,7 +38,7 @@ const projects: Project[] = [
     title: "Online Flexible Busy Time Scheduling",
     description: "Developed an algorithm for optimizing task scheduling on heterogeneous machines with varying availability.",
     icon: <Cloud size={24} />,
-    images: Object.keys(schedulingImages),
+    images: Object.keys(schedulingImages).map((key) => key.slice('/public'.length)),
     achievements: [
       "Reduced scheduling conflicts by 40%",
       "Improved resource utilization by 25%",
@@ -52,7 +52,7 @@ const projects: Project[] = [
     title: "Clash Royale Causal Analysis",
     description: "Conducted comprehensive data analysis of Clash Royale gameplay patterns and strategic decisions.",
     icon: <Gamepad size={24} />,
-    images: Object.keys(clashRoyaleImages),
+    images: Object.keys(clashRoyaleImages).map((key) => key.slice('/public'.length)),
     achievements: [
       "Analyzed over 10,000 game matches",
       "Identified key winning strategies",
