@@ -50,3 +50,10 @@ section {
 ::-webkit-scrollbar-thumb:hover {
   background: #a0a0a0;
 }
+
+.prose h2 {
+  font-size: 1.875rem; /* 30px */
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}

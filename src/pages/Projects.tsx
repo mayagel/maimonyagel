@@ -37,6 +37,118 @@ const renderReferenceIcon = (type: Reference['type']) => {
   }
 };
 
+const IOT_details = `
+<h1>💬 Building Marvin: A Hands-Free Voice Assistant Powered by GPT and IoT</h1>
+
+<section>
+  <h2>🧠 Why We Built It</h2>
+  <p>
+    In this project, we set out to create an accessible, hands-free voice assistant that anyone can talk to —
+    powered by ChatGPT. We were inspired by the idea that interacting with powerful AI models like GPT should be
+    as easy and natural as having a conversation, especially for people who face challenges with traditional interfaces or simply want a more comfortable, voice-driven experience.
+  </p>
+</section>
+
+<section>
+  <h2>📦 What We Built</h2>
+  <p>
+    The result is a small device — a compact, Internet-connected box — equipped with a microphone and a speaker.
+    The box also includes a colored LED to indicate its status:
+  </p>
+  <ul>
+    <li><strong>Green:</strong> Marvin is idle and listening for the wake word.</li>
+    <div className="grid grid-cols-3 gap-4 p-6">
+    <img
+                key={index}
+                src=/images/projects/iot/green-light.jpg
+                loading="lazy"
+                alt="green-light"
+                className="w-48 h-48 object-cover rounded-lg shadow-sm"
+              />
+              </div>
+    <li><strong>Red:</strong> Marvin has detected the wake word ("Marvin") and is loading the necessary resources.</li>
+    <img
+                key={index}
+                src=/images/projects/iot/red-light.jpg
+                loading="lazy"
+                alt="green-light"
+                className="w-full h-80 object-cover rounded-lg shadow-sm"
+              />
+    <li><strong>Blue:</strong> The user can now ask a question.</li>
+    <img
+                key={index}
+                src=/images/projects/iot/blue-light.jpg
+                loading="lazy"
+                alt="green-light"
+                className="w-full h-80 object-cover rounded-lg shadow-sm"
+              />
+    <li><strong>Red (again):</strong> Marvin is processing and answering.</li>
+    <img
+                key={index}
+                src=/images/projects/iot/red-light.jpg
+                loading="lazy"
+                alt="green-light"
+                className="w-full h-80 object-cover rounded-lg shadow-sm"
+              />
+    <li><strong>Green (again):</strong> Marvin returns to idle, ready for the next question.</li>
+    <img
+                key={index}
+                src=/images/projects/iot/green-light.jpg
+                loading="lazy"
+                alt="green-light"
+                className="w-full h-80 object-cover rounded-lg shadow-sm"
+              />
+  </ul>
+  <p>
+    The wake word detection helps reduce unnecessary API requests, saving bandwidth, processing power, and cost — especially important for real-time systems with limited resources like the ESP32.
+  </p>
+</section>
+
+<section>
+  <h2>🚧 Challenges We Faced</h2>
+  <ul>
+    <li>
+      <strong>Wake Word Detection:</strong> We trained a custom model using Edge Impulse to recognize the word “Marvin.”
+      This required generating and labeling audio spectrograms for reliable activation.
+    </li>
+    <li>
+      <strong>Audio Processing:</strong> Converting raw microphone input to WAV format in real time and streaming it efficiently to Google’s Speech-to-Text API was tricky due to memory limitations.
+    </li>
+    <li>
+      <strong>Real-Time Response:</strong> Ensuring low-latency interaction was essential for a smooth conversation experience, so we optimized audio chunking and network requests.
+    </li>
+    <li>
+      <strong>Natural Voice Output:</strong> We used I2S-based text-to-speech libraries to send Marvin’s responses to a speaker, managing synchronization and timing issues for seamless playback.
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2>🛠️ Technologies Used</h2>
+  <ul>
+    <li><strong>ESP32:</strong> Core microcontroller managing all logic and hardware interfaces.</li>
+    <li><strong>INMP441 Microphone + I2S Speaker:</strong> For capturing voice input and playing responses.</li>
+    <li><strong>Edge Impulse:</strong> For wake-word model training and inference on-device.</li>
+    <li><strong>Google Speech-to-Text API:</strong> For converting spoken questions into text.</li>
+    <li><strong>OpenAI GPT API:</strong> For generating intelligent, conversational answers.</li>
+    <li><strong>TxtToSpeech Library:</strong> For audio synthesis and I2S playback.</li>
+    <li><strong>Custom LED Logic:</strong> For intuitive status feedback during conversation flow.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>🎯 Final Thoughts</h2>
+  <p>
+    Marvin is more than a class project — it’s a step toward making powerful AI more accessible and intuitive.
+    The intersection of embedded systems, audio processing, and machine learning made this one of the most
+    fulfilling challenges we've tackled. We're proud of how far we pushed the boundaries of what’s possible on a tiny chip.
+  </p>
+  <p>
+    💻 Check out the full project and code on <a href="https://github.com/your-repo-link" target="_blank">GitHub</a>!
+  </p>
+</section>
+`;
+
 const projects: Project[] = [
   {
     id: 'iot',
@@ -50,11 +162,12 @@ const projects: Project[] = [
       "Integrated multiple IoT devices and protocols",
       "Achieved 95% accuracy in voice recognition"
     ],
-    details: "This project focused on creating a sophisticated voice assistance system that seamlessly integrates with various IoT devices. The system uses advanced natural language processing to understand and execute complex voice commands, making home automation more intuitive and accessible.",
-    technologies: ["Python", "TensorFlow", "MQTT", "Raspberry Pi"],
+    details: IOT_details,
+    technologies: ["Python", "TensorFlow", "ESPP32", "Arduino", "Google-API", "OpenAI-API", ],
     references: [
       { type: 'youtube', url: 'https://www.youtube.com/watch?v=UlPPj5W5egk&ab_channel=IOT_Technion', label: 'Demo Video' },
-      { type: 'github', url: 'https://github.com/iotPr/iot.git', label: 'git repository' }
+      { type: 'github', url: 'https://github.com/iotPr/iot.git', label: 'git repository' },
+      { type: 'ppt', url: 'https://docs.google.com/document/d/1iuSmsHvBlApy0ftigTnnmda4OAv2IQSw/edit?usp=sharing&ouid=102749786836587109022&rtpof=true&sd=true', label: 'project-documentation' }
     ]
   },
   {
@@ -171,7 +284,10 @@ const Projects: React.FC = () => {
               <h2 className="text-2xl font-bold text-gray-900">{currentProject.title}</h2>
             </div>
 
-            <p className="text-gray-600 mb-6">{currentProject.details}</p>
+            <div
+            className="prose prose-xl prose-neutral max-w-none"
+            dangerouslySetInnerHTML={{ __html: currentProject.details }}
+            ></div>
 
             <div className="mb-6">
               <h3 className="font-semibold text-gray-800 mb-3">Technologies Used:</h3>
