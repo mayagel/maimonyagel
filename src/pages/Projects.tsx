@@ -24,7 +24,7 @@ const projects: Project[] = [
     title: "IOT - Voice Assistance Project",
     description: "Developed an innovative voice assistance system integrating IoT devices for smart home automation.",
     icon: <Cpu size={24} />,
-    images: Object.keys(iotImages),
+    images: Object.keys(iotImages).map((key) => key.slice('/public'.length)),
     achievements: [
       "Implemented natural language processing for voice commands",
       "Integrated multiple IoT devices and protocols",
