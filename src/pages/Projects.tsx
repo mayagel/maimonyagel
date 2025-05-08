@@ -147,6 +147,7 @@ const Projects: React.FC = () => {
         <img
           key={22}
           src={firstImageSrc}
+          loading="lazy"
           alt={`${currentProject.title} screenshot`}
           className="w-full max-w-md h-auto rounded-lg shadow-sm mx-auto"
         />
@@ -156,6 +157,7 @@ const Projects: React.FC = () => {
               <img
                 key={index}
                 src={image}
+                loading="lazy"
                 alt={`${currentProject.title} screenshot ${index + 1}`}
                 className="w-full h-80 object-cover rounded-lg shadow-sm"
               />

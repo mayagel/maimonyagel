@@ -3,5 +3,8 @@
       "env": {
         "VERCEL_PROJECT_TYPE": "vite"
       }
-    }
+    },
+    "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
 }
