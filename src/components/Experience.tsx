@@ -1,6 +1,24 @@
 import React from 'react';
 import { CalendarClock, Server, GitBranch, Database, Activity } from 'lucide-react';
 
+const techKeywords = [
+  'React', 'Redux', 'JavaScript', 'TypeScript', 'NodeJS', 'Python', 'SQL', 'C\\+\\+',
+  'Docker', 'Kubernetes', 'Jest', 'Git', 'Grafana', 'Splunk', 'Apache Spark', 'CI/CD'
+];
+
+const highlightTechnologies = (text: string): React.ReactNode => {
+  const pattern = new RegExp(`\\b(${techKeywords.join('|')})\\b`, 'gi');
+  const parts = text.split(pattern);
+
+  return parts.map((part, i) =>
+    techKeywords.some(keyword => new RegExp(`^${keyword}$`, 'i').test(part)) ? (
+      <strong key={i} className="font-semibold text-gray-800">{part}</strong>
+    ) : (
+      <React.Fragment key={i}>{part}</React.Fragment>
+    )
+  );
+};
+
 const ExperienceCard: React.FC<{
   title: string;
   company: string;
@@ -24,7 +42,7 @@ const ExperienceCard: React.FC<{
             {responsibilities.map((responsibility, index) => (
               <li key={index} className="text-gray-600 flex items-start gap-2">
                 <span className="text-blue-600 mt-1">•</span>
-                <span>{responsibility}</span>
+                <span>{highlightTechnologies(responsibility)}</span>
               </li>
             ))}
           </ul>
@@ -39,7 +57,7 @@ const Experience: React.FC = () => {
     {
       title: 'Software Developer',
       company: 'Intel',
-      period: '2021-Present',
+      period: '2021-2025',
       icon: <Server size={24} />,
       responsibilities: [
         'Developing large-scale distributed systems, implementing scalable and robust full-stack solutions using React, Redux, NodeJS, and Python.',
